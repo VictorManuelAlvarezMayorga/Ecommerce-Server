@@ -8,7 +8,7 @@
 </head>
 <body>
     <p>Ya se veeeeeeeeeeeeee</p>
-    <p>Ayrrrtooooon Seeenaaaaaaa Da Braziiiiiiiiiil</p>
+    <p>Ayrrrtooooon Seeenaaaaaa Da Braziiiiiiiiiil</p>
 
     <?php
 include "dbcon.php";
