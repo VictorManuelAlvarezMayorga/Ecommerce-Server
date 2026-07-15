@@ -130,11 +130,11 @@ if (isset($_POST['save'])) {
         if ($query_run) {
 
             // Configuracion SMTP
-            $host = 'mail.midominio.mx';
+            $host = 'smtp.gmail.com';
             $port = 465;
-            $username = 'no-reply@midominio.mx';
-            $password = '=@dH6m7%MEa,';
-            $security = 'ssl';
+            $username = 'victormalvarez915@gmail.com';
+            $password = 'uozb tgfz zutn rxet';
+            $security = 'tls';
 
 
             // Crear instancia PHPMailer
