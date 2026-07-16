@@ -12,12 +12,12 @@ $medio = "web";         // valor por defecto
 
 $sql = "INSERT INTO usuarios (nombre, apellidopaterno, apellidomaterno, username, password, rol, estatus, medio) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-$stmt = $conexion->prepare($sql);
+$stmt = $con->prepare($sql);
 $stmt->bind_param("ssssssss", $nombre, $apellidopaterno, $apellidomaterno, $username, $password, $rol, $estatus, $medio);
 
 if ($stmt->execute()) {
     header("Location: login.php");
 } else {
-    echo "Error al registrar: " . $conexion->error;
+    echo "Error al registrar: " . $con->error;
 }
 ?>

@@ -4,9 +4,10 @@ $usuario = "root";
 $password = "";
 $basedatos = "ecommerce";
 
-$conexion = new mysqli($host, $usuario, $password, $basedatos);
+//conexion
+$con = new mysqli($host, $usuario, $password, $basedatos);
 
-if ($conexion->connect_error) {
-    die("Error de conexión: " . $conexion->connect_error);
+if ($con->connect_error) {
+    die("Error de conexión: " . $con->connect_error);
 }
 ?>
