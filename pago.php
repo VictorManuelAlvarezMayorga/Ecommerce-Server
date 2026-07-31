@@ -144,7 +144,7 @@ while ($stmtVentas->fetch()) {
 
             OpenPay.setId(OPENPAY_ID);
             OpenPay.setApiKey(OPENPAY_PK);
-            OpenPay.setSandboxMode(false);
+            OpenPay.setSandboxMode(true);
             var deviceSessionId = OpenPay.deviceData.setup("payment-form", "deviceIdHiddenFieldName");
 
             // Ajuste en el click del botón para no pedir token si es transferencia
@@ -189,7 +189,7 @@ while ($stmtVentas->fetch()) {
 </style>
 
 <body>
-    <?php include('componentes/menu.php'); ?>
+    <?php include('menu.php'); ?>
 
     <div class="container-fluid bg-light">
         <div class="row mt-5 justify-content-center">
