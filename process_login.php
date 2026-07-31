@@ -1,13 +1,19 @@
 <?php
 session_start();
 require 'dbcon.php';
+require 'smtp_config.php';
 require 'vendor/autoload.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $_POST['username'] ?? '';
+$password = $_POST['password'] ?? '';
+
+if ($username === '' || $password === '') {
+    echo "Completa todos los campos.";
+    exit;
+}
 
 $sql = "SELECT * FROM usuarios WHERE username = ?";
 $stmt = $con->prepare($sql);
@@ -27,6 +33,7 @@ if ($resultado->num_rows > 0) {
         $_SESSION['usuario_id'] = $usuario['id'];
         $_SESSION['usuario_nombre'] = $usuario['nombre'];
         $_SESSION['usuario_rol'] = $usuario['rol'];
+        $_SESSION['username'] = $usuario['username'];
 
         // Enviar correo de notificación de inicio de sesión
         enviarCorreoLogin($usuario['nombre'], $usuario['username']);
@@ -40,20 +47,21 @@ if ($resultado->num_rows > 0) {
     echo "No existe un usuario con ese nombre de usuario.";
 }
 
-function enviarCorreoLogin($nombre, $usernameLogin) {
+function enviarCorreoLogin($nombre, $usernameLogin)
+{
     $mail = new PHPMailer(true);
 
     try {
         $mail->isSMTP();
-        $mail->Host = 'smtp.gmail.com';
-        $mail->Port = 465;
+        $mail->Host = SMTP_HOST;
+        $mail->Port = SMTP_PORT;
         $mail->SMTPAuth = true;
-        $mail->Username = 'victormalvarez915@gmail.com';
-        $mail->Password = 'uozb tgfz zutn rxet'; // ⚠️ genera una nueva
-        $mail->SMTPSecure = 'ssl';
+        $mail->Username = SMTP_USER;
+        $mail->Password = SMTP_PASS;
+        $mail->SMTPSecure = SMTP_PORT === 465 ? PHPMailer::ENCRYPTION_SMTPS : PHPMailer::ENCRYPTION_STARTTLS;
 
-        $mail->setFrom('victormalvarez915@gmail.com', 'Mi Empresa - Notificaciones');
-        $mail->addAddress('victormalvarez915@gmail.com'); // a dónde llega la alerta
+        $mail->setFrom(SMTP_USER, 'Mi Empresa - Notificaciones');
+        $mail->addAddress(SMTP_USER); // a dónde llega la alerta (tú mismo, como admin)
         $mail->CharSet = 'UTF-8';
         $mail->isHTML(true);
 

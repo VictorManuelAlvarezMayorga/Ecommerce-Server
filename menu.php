@@ -20,7 +20,7 @@
         <div class="navbar-nav ms-auto menucanvass">
           <p>Aqui va una descripcion para la versión movíl</p>
           <hr>
-          <a class="nav-item nav-link" href="login-php">Intranet</a>
+          <a class="nav-item nav-link" href="login.php">Intranet</a>
           <a class="nav-item nav-link" href="tienda-en-linea.php">Tienda en línea</a>
           <a class="nav-item nav-link" href="carrito-de-compras.php"><i class="fas fa-shopping-cart"></i></a>
         </div>

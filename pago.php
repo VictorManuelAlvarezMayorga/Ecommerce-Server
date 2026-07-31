@@ -138,7 +138,7 @@ while ($stmtVentas->fetch()) {
 
     <script type="text/javascript">
         const OPENPAY_ID = "<?php echo $_ENV['OPENPAY_ID']; ?>";
-        const OPENPAY_PK = "";
+        const OPENPAY_PK = "<?php echo $_ENV['OPENPAY_PK']; ?>";
 
         $(document).ready(function() {
 

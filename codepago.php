@@ -23,9 +23,6 @@ use Openpay\Data\OpenpayApiAuthError;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
-require 'PHPMailer/src/Exception.php';
 
 require 'dbcon.php';
 
@@ -102,7 +99,7 @@ if (isset($_POST['update'])) {
         $_SERVER['REMOTE_ADDR']
     );
 
-    Openpay::setProductionMode(true);
+    Openpay::setProductionMode(false);
 
     $customer = [
         'name'         => $pedido['nombre'],

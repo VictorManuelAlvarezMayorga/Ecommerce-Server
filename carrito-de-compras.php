@@ -35,7 +35,7 @@ $comisionFactor = (float)$comisionValor / 100; // Ej: 0.03
 </head>
 
 <body style="background-color: #f5f5f5;">
-    <?php include 'componentes/menu.php'; ?>
+    <?php include 'menu.php'; ?>
     <div class="container-fluid">
         <div class="row mb-5 mt-5 justify-content-evenly" style="margin-top: 100px !important;padding:0px 10px;">
 
